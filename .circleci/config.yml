@@ -32,6 +32,8 @@ jobs:
       - checkout
       - run: export TERM=xterm && ./gradlew bootJar
       - run: ls build/libs
+      - run: sudo apt update && sudo apt install golang
+      - run: go get -u github.com/tcnksm/ghr
       - run: ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./build/libs
 workflows:
   version: 2
