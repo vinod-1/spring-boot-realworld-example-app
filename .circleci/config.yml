@@ -46,7 +46,8 @@ jobs:
       # specify the version you desire here
       - image: circleci/golang:1.13rc1-buster
     steps:
-      - checkout
+      - checkout      
+      - run: export TERM=xterm && ./gradlew bootJar
       - run: go get -u github.com/tcnksm/ghr
       - run: ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./build/libs
 #      - run: 
