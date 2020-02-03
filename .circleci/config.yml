@@ -32,11 +32,16 @@ jobs:
       - checkout
       - run: export TERM=xterm && ./gradlew bootJar
       - run: ls build/libs
-      - run: sudo apt update
-      - run: sudo add-apt-repository ppa:gophers/archive && sudo apt update && sudo apt install golang-1.11-go
+      - run: sudo apt update && sudo apt install golang-1.11-go
+      - run: wget https://dl.google.com/go/go1.10.linux-amd64.tar.gz
+      - run: sudo tar -xvf go1.10.linux-amd64.tar.gz
+      - run: sudo mv go /usr/local
+      - run: export GOROOT=/usr/local/go
+      - run: export GOPATH=$HOME/repo
+ #     - run: sudo add-apt-repository ppa:gophers/archive && sudo apt update && sudo apt install golang-1.11-go
  #     - run: wget https://dl.google.com/go/go1.13.3.linux-amd64.tar.gz
  #     - run: tar -xvf go1.13.3.linux-amd64.tar.gz && sudo mv go /usr/local
-      - run: export GOPATH=~/go
+ #     - run: export GOPATH=~/go
  #     - run: export GOPATH=$HOME/repo
  #     - run: export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
       - run: go get -u github.com/tcnksm/ghr
