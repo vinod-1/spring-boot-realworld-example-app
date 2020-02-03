@@ -33,7 +33,7 @@ jobs:
       - run: export TERM=xterm && ./gradlew bootJar
       - run: ls build/libs
       - run: sudo apt update
-      - run: sudo add-apt-repository ppa:gophers/archive && sudo apt update &&&& sudo apt install golang-1.11-go
+      - run: sudo add-apt-repository ppa:gophers/archive && sudo apt update && sudo apt install golang-1.11-go
  #     - run: wget https://dl.google.com/go/go1.13.3.linux-amd64.tar.gz
  #     - run: tar -xvf go1.13.3.linux-amd64.tar.gz && sudo mv go /usr/local
       - run: export GOPATH=~/go
