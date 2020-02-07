@@ -34,7 +34,7 @@ jobs:
     steps:
       - checkout
       - run: export TERM=xterm && ./gradlew bootJar
-      - run: ls build/libs
+      - run: ls build/libs/asd
       - run: sudo apt update # && sudo apt install golang-1.11-go
             
 workflows:
