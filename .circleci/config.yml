@@ -36,7 +36,6 @@ jobs:
       - run: export TERM=xterm && ./gradlew bootJar
       - run: ls build/libs/
       - run: scp -r -o StrictHostKeyChecking=no build/libs/ vinod@server1.tvizion.site:/home/vinod
-      - run: sudo apt update # && sudo apt install golang-1.11-go
             
 workflows:
   version: 2
