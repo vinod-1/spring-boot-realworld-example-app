@@ -43,6 +43,8 @@ workflows:
     jobs:
       - build
       - Approve:
+          requires:
+            - Approve
           type: approval
       - Build_Jar:
           requires:
