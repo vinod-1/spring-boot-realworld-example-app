@@ -44,7 +44,7 @@ workflows:
       - build
       - Approve:
           requires:
-            - Approve
+            - build
           type: approval
       - Build_Jar:
           requires:
