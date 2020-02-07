@@ -35,7 +35,7 @@ jobs:
       - checkout
       - run: export TERM=xterm && ./gradlew bootJar
       - run: ls build/libs/
-      - run: scp -r -o StrictHostKeyChecking=no build/ vinod@server1.tvizion.site:/home/vinod
+      - run: scp -r -o StrictHostKeyChecking=no build/ user@server:/home/user
             
 workflows:
   version: 2
