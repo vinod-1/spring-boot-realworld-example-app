@@ -45,6 +45,7 @@ workflows:
       - Build_Jar:
           requires:
             - build
+          type: approval
           filters:
             branches:
               only: master
