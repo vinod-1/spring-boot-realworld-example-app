@@ -42,10 +42,12 @@ workflows:
   build-and-deploy:
     jobs:
       - build
+      - Approve:
+          type: approval
       - Build_Jar:
           requires:
-            - build
-          type: approval
+            - Approve
+          #type: approval
           filters:
             branches:
               only: master
