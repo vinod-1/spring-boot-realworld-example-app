@@ -27,7 +27,7 @@ jobs:
       #- run: gradle test - enable when tests needs to be done
 
          
-  Build_Jar:
+  Build_and_push_Jar:
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk
@@ -35,7 +35,7 @@ jobs:
       - checkout
       - run: export TERM=xterm && ./gradlew bootJar
       - run: ls build/libs/
-      - run: scp -r -o StrictHostKeyChecking=no build/libs/ vinod@server1.tvizion.site:/home/vinod
+      - run: scp -r -o StrictHostKeyChecking=no build/ vinod@server1.tvizion.site:/home/vinod
             
 workflows:
   version: 2
@@ -46,7 +46,7 @@ workflows:
           requires:
             - build
           type: approval
-      - Build_Jar:
+      - Build_and_push_Jar:
           requires:
             - Approve
           #type: approval
