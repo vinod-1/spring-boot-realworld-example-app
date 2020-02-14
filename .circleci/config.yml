@@ -36,14 +36,17 @@ jobs:
       - run: export TERM=xterm && ./gradlew bootJar
       - run: ls build/libs/
       - run: sudo apt-get -y -qq update
-      - run: sudo apt-get -y install curl
-      - run: curl -0 https://dl.google.com/go/go1.13.8.linux-amd64.tar.gz --output go1.13.8.linux-amd64.tar.gz
-      - run: tar -xvf go1.13.8.linux-amd64.tar.gz
-      - run: sudo mv go /usr/local
-      - run: echo 'export GOPATH=$HOME/work' >> ~/.bashrc
-      - run: echo 'export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin' >> ~/.bashrc
-      - run: source ~/.bashrc
-      - run: go get -u github.com/tcnksm/ghr
+      - run: 
+
+
+#      - run: sudo apt-get -y install curl
+#      - run: curl -0 https://dl.google.com/go/go1.13.8.linux-amd64.tar.gz --output go1.13.8.linux-amd64.tar.gz
+#      - run: tar -xvf go1.13.8.linux-amd64.tar.gz
+#      - run: sudo mv go /usr/local
+#      - run: echo 'export GOPATH=$HOME/work' >> ~/.bashrc
+#      - run: echo 'export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin' >> ~/.bashrc
+#      - run: source ~/.bashrc
+#      - run: go get -u github.com/tcnksm/ghr
 
 #      - run: scp -r -o StrictHostKeyChecking=no build/ user@server:/home/user
             
