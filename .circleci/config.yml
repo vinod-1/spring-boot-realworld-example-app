@@ -51,7 +51,19 @@ jobs:
             source $BASH_ENV
     
       - run: go get -u github.com/tcnksm/ghr
-      - run: ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${CIRCLE_BUILD_NUM} ~/project/build/libs
+      - run: go get -u github.com/stevenmatthewt/semantics
+      - run:
+          name: create release
+          command: |
+            tag=$(semantics --output-tag)
+            if [ "$tag" ]; then
+              ghr -t $GITHUB_TOKEN -u $CIRCLE_PROJECT_USERNAME -r $CIRCLE_PROJECT_REPONAME --replace $tag dist/
+            else
+              echo "The commit message(s) did not indicate a major/minor/patch version."
+            fi
+      
+#      - run: CIRCLE_BUILD_NUM
+#      - run: ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${CIRCLE_BUILD_NUM} ~/project/build/libs
 
 #      - run: scp -r -o StrictHostKeyChecking=no build/ user@server:/home/user
             
