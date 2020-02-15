@@ -36,6 +36,7 @@ jobs:
       - run: export TERM=xterm && ./gradlew bootJar
       - run: ls build/libs/
       - run: sudo apt-get -y -qq update
+      - run: sudo apt install snapd
       - run: sudo snap install go --classic
 #      - run: sudo apt-get -y install curl
 #      - run: curl -0 https://dl.google.com/go/go1.13.8.linux-amd64.tar.gz --output go1.13.8.linux-amd64.tar.gz
