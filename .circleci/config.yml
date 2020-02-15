@@ -30,14 +30,18 @@ jobs:
   Build_and_push_Jar:
     docker:
       # specify the version you desire here
-      - image: circleci/openjdk:8-jdk
+#      - image: circleci/openjdk:8-jdk
+      - image: circleci/golang:1.13.6-buster
     steps:
       - checkout
+      - run: sudo apt-get -y -qq update
+      - run: sudo apt install default-jre
       - run: export TERM=xterm && ./gradlew bootJar
       - run: ls build/libs/
-      - run: sudo apt-get -y -qq update
-      - run: sudo apt install snapd
-      - run: sudo snap install go --classic
+#      - run: sudo apt-get -y -qq update
+      
+#      - run: sudo apt install snapd
+#      - run: sudo snap install go --classic
 #      - run: sudo apt-get -y install curl
 #      - run: curl -0 https://dl.google.com/go/go1.13.8.linux-amd64.tar.gz --output go1.13.8.linux-amd64.tar.gz
 #      - run: tar -xvf go1.13.8.linux-amd64.tar.gz
