@@ -43,11 +43,6 @@ jobs:
       - run: curl -0 https://dl.google.com/go/go1.13.8.linux-amd64.tar.gz --output go1.13.8.linux-amd64.tar.gz
       - run: tar -xvf go1.13.8.linux-amd64.tar.gz
       - run: sudo mv go /usr/local
-#      - run: echo 'export GOPATH="$HOME/go"' >> ~/.bashrc
-#      - run: echo 'export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"' >> ~/.bashrc
-#      - run: source ~/.bashrc
-#      - run: echo 'GOPATH="/home/circleci/go"' >> ~/.bashrc
-#      - run: echo 'GOROOT="/usr/local/go"' >> ~/.bashrc
       - run:
           name: Set env Vars
           command: |
@@ -56,6 +51,8 @@ jobs:
             source $BASH_ENV
     
       - run: go get -u github.com/tcnksm/ghr
+      - run: ${VERSION}=$((${VERSION} + 1))
+      - run: echo ${VERSION}
       - run: ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ~/project/build/libs
 
 #      - run: scp -r -o StrictHostKeyChecking=no build/ user@server:/home/user
