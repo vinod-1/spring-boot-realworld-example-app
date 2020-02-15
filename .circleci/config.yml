@@ -32,6 +32,7 @@ jobs:
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk
 #      - image: circleci/golang:1.13.6-buster
+    working_directory: ~/project
     steps:
       - checkout
       - run: sudo apt-get -y -qq update
