@@ -61,13 +61,13 @@ workflows:
   build-and-deploy:
     jobs:
       - build
-      - Approve:
-          requires:
-            - build
-          type: approval
+#      - Approve:
+#          requires:
+#            - build
+#          type: approval
       - Build_and_push_Jar
-          requires:
-            - Approve
+#          requires:
+#            - Approve
           #type: approval
 #          filters:
 #            branches:
