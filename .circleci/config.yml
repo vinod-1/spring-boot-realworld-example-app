@@ -56,6 +56,7 @@ jobs:
             source $BASH_ENV
     
       - run: go get -u github.com/tcnksm/ghr
+      - run: ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ~/project/build/libs
 
 #      - run: scp -r -o StrictHostKeyChecking=no build/ user@server:/home/user
             
