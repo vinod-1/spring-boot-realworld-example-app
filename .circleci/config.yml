@@ -43,9 +43,9 @@ jobs:
       - run: curl -0 https://dl.google.com/go/go1.13.8.linux-amd64.tar.gz --output go1.13.8.linux-amd64.tar.gz
       - run: tar -xvf go1.13.8.linux-amd64.tar.gz
       - run: sudo mv go /usr/local
-      - run: echo 'export GOPATH=$HOME/go' >> ~/.bashrc
-      - run: echo 'export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin' >> ~/.bashrc
-      - run: exec bash
+      - run: echo 'export GOPATH="$HOME/go"' >> ~/.bashrc
+      - run: echo 'export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"' >> ~/.bashrc
+      - run: source ~/.bashrc
 #      - run: echo 'GOPATH="/home/circleci/go"' >> ~/.bashrc
 #      - run: echo 'GOROOT="/usr/local/go"' >> ~/.bashrc
       - run: sleep 5
