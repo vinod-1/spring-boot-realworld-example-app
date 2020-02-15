@@ -50,20 +50,9 @@ jobs:
             echo 'export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"' >> $BASH_ENV
             source $BASH_ENV
     
-      - run: go get -u github.com/tcnksm/ghr
-      - run: go get -u github.com/stevenmatthewt/semantics
-      - run:
-          name: create release
-          command: |
-            tag=$(semantics --output-tag)
-            if [ "$tag" ]; then
-              ghr -t $GITHUB_TOKEN -u $CIRCLE_PROJECT_USERNAME -r $CIRCLE_PROJECT_REPONAME --replace $tag dist/
-            else
-              echo "The commit message(s) did not indicate a major/minor/patch version."
-            fi
-      
+      - run: go get -u github.com/tcnksm/ghr      
 #      - run: CIRCLE_BUILD_NUM
-#      - run: ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${CIRCLE_BUILD_NUM} ~/project/build/libs
+      - run: ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${CIRCLE_BUILD_NUM} ~/project/build/libs
 
 #      - run: scp -r -o StrictHostKeyChecking=no build/ user@server:/home/user
             
@@ -72,13 +61,13 @@ workflows:
   build-and-deploy:
     jobs:
       - build
-#      - Approve:
-#          requires:
-#            - build
-#          type: approval
+      - Approve:
+          requires:
+            - build
+          type: approval
       - Build_and_push_Jar
-#          requires:
-#            - Approve
+          requires:
+            - Approve
           #type: approval
 #          filters:
 #            branches:
