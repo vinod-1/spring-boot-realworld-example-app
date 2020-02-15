@@ -46,6 +46,8 @@ jobs:
       - run: echo 'export GOPATH=$HOME/go' >> ~/.bashrc
       - run: echo 'export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin' >> ~/.bashrc
       - run: source ~/.bashrc
+      - run: echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile
+      - run: source ~/.profile
       - run: go get -u github.com/tcnksm/ghr
 
 #      - run: scp -r -o StrictHostKeyChecking=no build/ user@server:/home/user
