@@ -48,7 +48,7 @@ jobs:
 #      - run: source ~/.bashrc
 #      - run: echo 'GOPATH="/home/circleci/go"' >> ~/.bashrc
 #      - run: echo 'GOROOT="/usr/local/go"' >> ~/.bashrc
-       - run:
+      - run:
           name: Set env Vars
           command: |
             echo 'export export GOPATH="$HOME/go"' >> $BASH_ENV
