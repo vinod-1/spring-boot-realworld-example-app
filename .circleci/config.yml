@@ -66,8 +66,13 @@ workflows:
 #            - build
 #          type: approval
       - Build_and_push_Jar
-#          requires:
-#            - Approve
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^\d+\.\d+\.\d+$/
           #type: approval
 #          filters:
 #            branches:
