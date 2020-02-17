@@ -65,7 +65,7 @@ workflows:
 #          requires:
 #            - build
 #          type: approval
-      - Build_and_push_Jar
+      - Build_and_push_Jar:
           requires:
             - build
           filters:
