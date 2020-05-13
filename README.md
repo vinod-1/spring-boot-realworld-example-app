@@ -6,7 +6,7 @@ This codebase was created to demonstrate a fully fledged fullstack application b
 
 For more information on how to this works with other frontends/backends, head over to the [RealWorld](https://github.com/gothinkster/realworld) repo.
 
-# How it works
+# How it works0
 
 The application uses Spring boot (Web, Mybatis).
 
